@@ -4,8 +4,8 @@ defmodule Solution do
     h = Enum.max(candies)
 
     Enum.reduce(candies, [], fn c, return ->
-      return ++ [process(c, extra_candies, h)]
-    end)
+      [process(c, extra_candies, h) | return]
+    end) |> Enum.reverse()
   end
 
   def process(c, ec, h) when c + ec < h, do: false
